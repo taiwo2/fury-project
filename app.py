@@ -68,7 +68,7 @@ class Show(db.Model):
     __tablename__ = 'Show'
 
     id = db.Column(db.Integer, primary_key=True)
-    list_id = db.Column(db.Integer, db.ForeignKey('venue_id'), nullable=True)
+    venue_id = db.Column(db.Integer, db.ForeignKey('venue_id'), nullable=True)
     artist_id = db.Column(db.Integer, db.ForeignKey('artist_id'), nullable=True)
     artist_name = db.Column(db.Integer, db.ForeignKey('artist_name'), nullable=True)
     artist_image_link = db.Column(db.Integer, db.ForeignKey('artist_image_link'), nullable=True)
@@ -277,9 +277,6 @@ def create_artist_submission():
     flash('Artist ' + request.form['name'] + ' was successfully listed!')
     return render_template('pages/home.html')
 
-
-#  Shows
-#  ----------------------------------------------------------------
 
 @app.route('/shows')
 def shows():
